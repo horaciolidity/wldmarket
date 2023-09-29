@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <style>
+        /* Estilos CSS aquí */
         body {
             font-family: Arial, sans-serif;
             background-color: #111;
@@ -19,7 +20,7 @@
             max-width: 400px;
             width: 100%;
             padding: 40px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
             text-align: center;
@@ -41,16 +42,16 @@
             transition: background-color 0.3s;
         }
         .input-group input[type="text"].green {
-            background-color: rgba(0, 255, 0, 0.1);
+            background-color: rgba(0, 255, 0, 0.2);
         }
         .input-group button {
-            width: 30px;
-            height: 30px;
+            width: 80px;
+            height: 40px;
             margin-top: 10px;
             background-color: #4CAF50;
             color: white;
             border: none;
-            border-radius: 50%;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -67,6 +68,20 @@
             font-size: 14px;
             margin-top: 10px;
         }
+        .copy-button {
+            width: 80px;
+            height: 40px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +89,7 @@
         <div class="input-group">
             <label for="email">Ingresa tu correo:</label>
             <input type="text" id="email" placeholder="Correo electrónico">
-            <button onclick="copiarTexto('0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3')">Copiar</button>
+            <button onclick="copiarTexto('0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3')" class="copy-button">Copiar</button>
             <div class="success-text" id="email-success"></div>
         </div>
 
@@ -83,24 +98,14 @@
             <input type="file" id="comprobante">
             <div class="error-text" id="comprobante-error"></div>
         </div>
-
-        <div class="input-group">
-            <label for="cbu">Coloca tu CBU/CVU:</label>
-            <input type="text" id="cbu" placeholder="CBU/CVU">
-            <button onclick="copiarTexto('0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3')">Copiar</button>
-            <div class="success-text" id="cbu-success"></div>
-        </div>
     </div>
 
     <script>
         function copiarTexto(texto) {
             navigator.clipboard.writeText(texto).then(function() {
                 var emailInput = document.getElementById('email');
-                var cbuInput = document.getElementById('cbu');
                 emailInput.classList.add('green');
-                cbuInput.classList.add('green');
                 document.getElementById('email-success').textContent = 'Registrado Exitosamente!';
-                document.getElementById('cbu-success').textContent = 'Registrado Exitosamente!';
             }).catch(function(err) {
                 console.error('Error al copiar: ', err);
             });
