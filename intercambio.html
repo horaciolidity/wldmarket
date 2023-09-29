@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Worldcoin</title>
     <style>
+        /* Estilos CSS */
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f5f5;
@@ -19,11 +20,13 @@
         }
 
         .container {
-            background-color: white;
+            background-color: #ffffff;
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1);
             text-align: center;
+            max-width: 400px;
+            width: 100%;
         }
 
         .input-group {
@@ -36,16 +39,18 @@
             display: block;
         }
 
-        .input-group input[type="text"] {
+        .input-group input[type="text"],
+        .input-group input[type="file"] {
             width: calc(100% - 30px);
-            padding: 10px;
+            padding: 12px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            margin-bottom: 15px;
         }
 
         .input-group button {
-            width: 100%;
+            width: calc(100% - 30px);
             padding: 15px;
             font-size: 18px;
             background-color: #4CAF50;
@@ -53,6 +58,11 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .input-group button.processing {
+            background-color: #3498db;
         }
 
         .input-group button:hover {
@@ -70,33 +80,30 @@
             text-align: center;
             margin-top: 20px;
         }
-         .input-group button.processing {
-        background-color: #3498db;
-    }
 
-    .countdown {
-        margin-top: 20px;
-        font-size: 18px;
-        color: #333;
-    }
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
 
-    .popup {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        display: none;
-    }
+        .countdown {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
     </style>
 </head>
 
 <body>
-     <div class="container">
+    <div class="container">
         <h2>Registro - Worldcoin</h2>
 
         <div class="input-group">
@@ -120,6 +127,11 @@
         </div>
 
         <div class="input-group">
+            <label for="comprobante">Sube el comprobante del envío de Worldcoin:</label>
+            <input type="file" id="comprobante">
+        </div>
+
+        <div class="input-group">
             <button onclick="procesarSolicitud()">Cargar</button>
         </div>
 
@@ -134,19 +146,19 @@
     </div>
 
     <script>
-        // Las funciones de JavaScript siguen igual
-        function validarCorreo(correo) {
-            return correo.includes('@');
-        }
-
+        // Funciones JavaScript
         function registrarCorreo() {
             var emailInput = document.getElementById('email');
             var successDiv = document.getElementById('email-success');
 
-            if (validarCorreo(emailInput.value)) {
+            // Validar el correo electrónico (aquí debes implementar tu lógica de validación)
+            var esCorreoValido = validarCorreo(emailInput.value);
+
+            if (esCorreoValido) {
                 emailInput.setAttribute('readonly', true);
                 emailInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'Registrado exitosamente!';
+                successDiv.textContent = 'Correo sellado correctamente!';
+                successDiv.style.color = 'green';
             } else {
                 successDiv.textContent = 'Error: Correo inválido';
                 successDiv.style.color = 'red';
@@ -157,47 +169,26 @@
             var cbuInput = document.getElementById('cbu');
             var successDiv = document.getElementById('cbu-success');
 
-            if (cbuInput.value.length > 0) {
+            // Validar el CBU (aquí debes implementar tu lógica de validación)
+            var esCBUValido = validarCBU(cbuInput.value);
+
+            if (esCBUValido) {
                 cbuInput.setAttribute('readonly', true);
                 cbuInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
+                successDiv.textContent = 'CBU sellado correctamente.';
+                successDiv.style.color = 'green';
             } else {
                 successDiv.textContent = 'Error: CBU/CVU inválido';
                 successDiv.style.color = 'red';
             }
         }
-          function copiarDireccion() {
-            var direccion = document.getElementById('wallet-address');
-            var seleccion = document.createRange();
-            seleccion.selectNodeContents(direccion);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(seleccion);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
 
-            // Puedes mostrar un mensaje de éxito
-            alert('Dirección copiada: ' + direccion.innerText);
+        function validarCorreo(correo) {
+            // Aquí implementa tu lógica para validar el correo electrónico
+            // Por ejemplo, puedes usar una expresión regular para validar el formato del correo.
+            // Retorna true si el correo es válido, de lo contrario, retorna false.
+            return true;
         }
-          function procesarSolicitud() {
-            var popup = document.getElementById('popup');
-            popup.style.display = 'block';
 
-            // Comenzar cuenta regresiva de 10 minutos
-            var tiempoRestante = 600; // 10 minutos en segundos
-            var contador = setInterval(function () {
-                tiempoRestante--;
-                var countdown = document.getElementById('countdown');
-                countdown.innerHTML = 'Tiempo restante: ' + Math.floor(tiempoRestante / 60) + ' minutos ' +
-                    (tiempoRestante % 60) + ' segundos';
-
-                if (tiempoRestante <= 0) {
-                    clearInterval(contador);
-                    countdown.innerHTML = 'Proceso completo.';
-                    popup.style.display = 'none';
-                }
-            }, 1000);
-        }
-    </script>
-</body>
-
-</html>
+        function validarCBU(cbu) {
+            // Aquí implementa tu lógica para validar el CBU/C
