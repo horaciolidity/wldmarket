@@ -77,6 +77,10 @@
         .btn-sell {
             background-color: #4CAF50;
         }
+        
+        .label-text {
+            color: black; /* Color negro para el texto del label */
+        }
     </style>
 </head>
 
@@ -100,7 +104,7 @@
         function calcularCotizacion() {
             var worldcoin = document.getElementById('worldcoin').value;
             var cotizacion = worldcoin * 1100;
-            document.getElementById('result').innerText = `USDTEd recibirás: ${cotizacion} ARS`;
+            document.getElementById('result').innerText = `Usted recibirá: ${cotizacion} ARS`;
         }
     </script>
 </body>
