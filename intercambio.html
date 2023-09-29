@@ -7,46 +7,65 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .input-group, .card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
-        }
-        .input-group label, .card p {
-            color: black;
-        }
-        .input-group input[type="text"], .input-group button {
+            max-width: 400px;
             width: 100%;
-            padding: 15px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            font-size: 18px;
+        }
+        .input-group input[type="text"] {
+            width: calc(100% - 30px);
+            padding: 10px;
             font-size: 16px;
-            margin-bottom: 10px;
+            margin-top: 10px;
             border: none;
             border-radius: 5px;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        .input-group input[type="text"].green {
+            background-color: rgba(0, 255, 0, 0.1);
         }
         .input-group button {
+            width: 30px;
+            height: 30px;
+            margin-top: 10px;
             background-color: #4CAF50;
             color: white;
+            border: none;
+            border-radius: 50%;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .input-group button:hover {
+            background-color: #45a049;
         }
         .success-text {
             color: green;
             font-size: 14px;
             margin-top: 10px;
         }
-        .support-text {
+        .error-text {
+            color: red;
             font-size: 14px;
-            text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -55,66 +74,47 @@
         <div class="input-group">
             <label for="email">Ingresa tu correo:</label>
             <input type="text" id="email" placeholder="Correo electrónico">
-            <button onclick="registrarCorreo()">Registro y enviar</button>
+            <button onclick="copiarTexto('0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3')">Copiar</button>
             <div class="success-text" id="email-success"></div>
-        </div>
-
-        <div class="input-group">
-            <label for="cbu">Coloca tu CBU/CVU:</label>
-            <input type="text" id="cbu" placeholder="CBU/CVU">
-            <button onclick="registrarCBU()">Registrar y enviar</button>
-            <div class="success-text" id="cbu-success"></div>
-        </div>
-
-        <div class="card">
-            <p>Copia y envía los WLD a esta dirección:</p>
-            <p>0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3</p>
         </div>
 
         <div class="input-group">
             <label for="comprobante">Sube el comprobante del envío de Worldcoin:</label>
             <input type="file" id="comprobante">
+            <div class="error-text" id="comprobante-error"></div>
         </div>
 
-        <div class="support-text">
-            <p>Support: <a href="mailto:WorldcoinAPP@Worldcoin.org">WorldcoinAPP@Worldcoin.org</a></p>
+        <div class="input-group">
+            <label for="cbu">Coloca tu CBU/CVU:</label>
+            <input type="text" id="cbu" placeholder="CBU/CVU">
+            <button onclick="copiarTexto('0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3')">Copiar</button>
+            <div class="success-text" id="cbu-success"></div>
         </div>
     </div>
 
     <script>
-        function validarCorreo(correo) {
-            return correo.includes('@');
+        function copiarTexto(texto) {
+            navigator.clipboard.writeText(texto).then(function() {
+                var emailInput = document.getElementById('email');
+                var cbuInput = document.getElementById('cbu');
+                emailInput.classList.add('green');
+                cbuInput.classList.add('green');
+                document.getElementById('email-success').textContent = 'Registrado Exitosamente!';
+                document.getElementById('cbu-success').textContent = 'Registrado Exitosamente!';
+            }).catch(function(err) {
+                console.error('Error al copiar: ', err);
+            });
         }
 
-        function registrarCorreo() {
-            var emailInput = document.getElementById('email');
-            var successDiv = document.getElementById('email-success');
-
-            if (validarCorreo(emailInput.value)) {
-                emailInput.setAttribute('readonly', true);
-                emailInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'Registrado exitosamente!';
-                successDiv.style.color = 'green';
+        var comprobanteInput = document.getElementById('comprobante');
+        comprobanteInput.addEventListener('change', function() {
+            var errorDiv = document.getElementById('comprobante-error');
+            if (comprobanteInput.files.length > 0) {
+                errorDiv.textContent = '';
             } else {
-                successDiv.textContent = 'Error: Correo inválido';
-                successDiv.style.color = 'red';
+                errorDiv.textContent = 'Error: La foto del comprobante no se ha cargado.';
             }
-        }
-
-        function registrarCBU() {
-            var cbuInput = document.getElementById('cbu');
-            var successDiv = document.getElementById('cbu-success');
-
-            if (cbuInput.value.length > 0) {
-                cbuInput.setAttribute('readonly', true);
-                cbuInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
-                successDiv.style.color = 'green';
-            } else {
-                successDiv.textContent = 'Error: CBU/CVU inválido';
-                successDiv.style.color = 'red';
-            }
-        }
+        });
     </script>
 </body>
 </html>
