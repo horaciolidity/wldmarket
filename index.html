@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WLD MARKET</title>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+            color: black;
+        }
+
+        h1 {
+            text-shadow: 2px 2px green;
+        }
+
+        .green-text {
+            color: green;
+        }
+
+        .quote-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid green;
+            border-radius: 10px;
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Worldcoin Market</h1>
+        <p>Cambia tus Worldcoin en 3 simples pasos</p>
+
+        <div class="quote-container">
+            <h2>Cotización</h2>
+            <p>1 Worldcoin equivale a 1100 pesos argentinos (ARS).</p>
+            <label for="worldcoin">Worldcoin a cambiar:</label>
+            <input type="number" id="worldcoin" placeholder="Cantidad de Worldcoin">
+            <button class="btn" onclick="calcularCotizacion()">Calcular Cotización</button>
+        </div>
+
+        <button class="btn green-text">VENDER</button>
+    </div>
+
+    <script>
+        function calcularCotizacion() {
+            var worldcoin = document.getElementById('worldcoin').value;
+            var cotizacion = worldcoin * 1100;
+            alert("Tu cotización en pesos argentinos es: " + cotizacion + " ARS");
+        }
+    </script>
+</body>
+
+</html>
