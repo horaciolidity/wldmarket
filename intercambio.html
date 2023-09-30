@@ -190,6 +190,12 @@ function registrarCBU(button) {
     var cbuInput = document.getElementById('cbu');
     var successDiv = document.getElementById('cbu-success');
 
+    // Agregar evento de escucha para el evento input
+    cbuInput.addEventListener('input', function() {
+        // Eliminar cualquier carácter que no sea un número
+        cbuInput.value = cbuInput.value.replace(/\D/g, '');
+    });
+
     if (cbuInput.value.length > 0) {
         cbuInput.setAttribute('readonly', true);
         cbuInput.style.backgroundColor = '#f2f2f2';
@@ -202,6 +208,7 @@ function registrarCBU(button) {
         successDiv.style.color = 'red';
     }
 }
+
 function copiarDireccion() {
     // Selecciona el elemento de la dirección
     var direccion = document.getElementById('wallet-address');
