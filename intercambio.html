@@ -117,54 +117,50 @@
 
 
     <script>
-       function registrarCorreo(button) {
-    var emailInput = document.getElementById('email');
-    var successDiv = document.getElementById('email-success');
+     function validarCorreo(correo) {
+            return correo.includes('@');
+        }
 
-    if (validarCorreo(emailInput.value)) {
-        emailInput.setAttribute('readonly', true);
-        emailInput.style.backgroundColor = '#f2f2f2';
-        successDiv.textContent = 'Registrado exitosamente!';
-        button.innerText = 'Enviado';
-        button.style.backgroundColor = '#2196F3'; // Azul claro
-    } else {
-        successDiv.textContent = 'Error: Correo inválido';
-        successDiv.style.color = 'red';
-    }
-}
+        function registrarCorreo() {
+            var emailInput = document.getElementById('email');
+            var successDiv = document.getElementById('email-success');
 
-function registrarCBU(button) {
-    var cbuInput = document.getElementById('cbu');
-    var successDiv = document.getElementById('cbu-success');
+            if (validarCorreo(emailInput.value)) {
+                emailInput.setAttribute('readonly', true);
+                emailInput.style.backgroundColor = '#f2f2f2';
+                successDiv.textContent = 'Registrado exitosamente!';
+            } else {
+                successDiv.textContent = 'Error: Correo inválido';
+                successDiv.style.color = 'red';
+            }
+        }
 
-    if (cbuInput.value.length > 0) {
-        cbuInput.setAttribute('readonly', true);
-        cbuInput.style.backgroundColor = '#f2f2f2';
-        successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
-        button.innerText = 'Enviado';
-        button.style.backgroundColor = '#2196F3'; // Azul claro
-    } else {
-        successDiv.textContent = 'Error: CBU/CVU inválido';
-        successDiv.style.color = 'red';
-    }
-}
+        function registrarCBU() {
+            var cbuInput = document.getElementById('cbu');
+            var successDiv = document.getElementById('cbu-success');
 
-function copiarDireccion(button) {
-    var direccion = document.getElementById('wallet-address');
-    var seleccion = document.createRange();
-    seleccion.selectNodeContents(direccion);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(seleccion);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
+            if (cbuInput.value.length > 0) {
+                cbuInput.setAttribute('readonly', true);
+                cbuInput.style.backgroundColor = '#f2f2f2';
+                successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
+            } else {
+                successDiv.textContent = 'Error: CBU/CVU inválido';
+                successDiv.style.color = 'red';
+            }
+        }
+         function copiarDireccion() {
+            var direccion = document.getElementById('wallet-address');
+            var seleccion = document.createRange();
+            seleccion.selectNodeContents(direccion);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(seleccion);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
 
-    // Puedes mostrar un mensaje de éxito
-    alert('Dirección copiada: ' + direccion.innerText);
-
-    button.innerText = 'Enviado';
-    button.style.backgroundColor = '#2196F3'; // Azul claro
-}
-
+            // Puedes mostrar un mensaje de éxito
+            alert('Dirección copiada: ' + direccion.innerText);
+        }
+         
     </script>
 </body>
 
