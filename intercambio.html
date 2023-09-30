@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Worldcoin</title>
     <style>
-      body {
+     body {
     font-family: Arial, sans-serif;
     background-color: #000;
     color: #fff;
@@ -60,12 +60,21 @@
     background-color: #4CAF50;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px; /* Bordes redondos */
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Transición suave */
 }
 
 .input-group button:hover {
     background-color: #45a049;
+}
+
+.input-group button.upload-btn {
+    background-color: #007BFF; /* Azul claro */
+}
+
+.input-group button.upload-btn:hover {
+    background-color: #0056b3; /* Azul oscuro al pasar el mouse */
 }
 
 .success-text {
