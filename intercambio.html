@@ -189,14 +189,10 @@ function registrarCorreo(button) {
 function registrarCBU(button) {
     var cbuInput = document.getElementById('cbu');
     var successDiv = document.getElementById('cbu-success');
+    var cbuValue = cbuInput.value;
 
-    // Agregar evento de escucha para el evento input
-    cbuInput.addEventListener('input', function() {
-        // Eliminar cualquier carácter que no sea un número usando una expresión regular
-        cbuInput.value = cbuInput.value.replace(/\D/g, '');
-    });
-
-    if (cbuInput.value.length > 0) {
+    // Verificar si el valor contiene solo números usando una expresión regular
+    if (/^\d+$/.test(cbuValue)) {
         cbuInput.setAttribute('readonly', true);
         cbuInput.style.backgroundColor = '#f2f2f2';
         successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
@@ -204,7 +200,7 @@ function registrarCBU(button) {
         // Cambiar el texto del botón a "CONFIRMADO"
         button.textContent = 'CONFIRMADO';
     } else {
-        successDiv.textContent = 'Error: CBU/CVU inválido';
+        successDiv.textContent = 'Error: Por favor, ingrese solo números en el CBU.';
         successDiv.style.color = 'red';
     }
 }
