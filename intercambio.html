@@ -157,16 +157,32 @@ function registrarCBU(button) {
 
 function copiarDireccion() {
     var direccion = document.getElementById('wallet-address');
-    var seleccion = document.createRange();
-    seleccion.selectNodeContents(direccion);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(seleccion);
-    document.execCommand('copy');
-    window.getSelection().removeAllRanges();
+    var texto = direccion.innerText || direccion.textContent;
 
-    // Puedes mostrar un mensaje de éxito
-    alert('Dirección copiada: ' + direccion.innerText);
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(texto)
+            .then(function() {
+                // Copia exitosa
+                alert('Dirección copiada: ' + texto);
+            })
+            .catch(function(err) {
+                // Manejar errores
+                console.error('Error al copiar: ', err);
+            });
+    } else {
+        // Si el navegador no es compatible con el API de Clipboard, usa el enfoque anterior
+        var seleccion = document.createRange();
+        seleccion.selectNodeContents(direccion);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(seleccion);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+
+        // Puedes mostrar un mensaje de éxito
+        alert('Dirección copiada: ' + texto);
+    }
 }
+
 
     </script>
 </body>
