@@ -118,49 +118,62 @@
 
     <script>
      function validarCorreo(correo) {
-            return correo.includes('@');
-        }
+    return correo.includes('@');
+}
 
-        function registrarCorreo() {
-            var emailInput = document.getElementById('email');
-            var successDiv = document.getElementById('email-success');
+function registrarCorreo() {
+    var emailInput = document.getElementById('email');
+    var successDiv = document.getElementById('email-success');
 
-            if (validarCorreo(emailInput.value)) {
-                emailInput.setAttribute('readonly', true);
-                emailInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'Registrado exitosamente!';
-            } else {
-                successDiv.textContent = 'Error: Correo inválido';
-                successDiv.style.color = 'red';
-            }
-        }
+    if (validarCorreo(emailInput.value)) {
+        emailInput.setAttribute('readonly', true);
+        emailInput.style.backgroundColor = '#f2f2f2';
+        successDiv.textContent = 'Registrado exitosamente!';
+        
+        // Cambiar el nombre del botón a "CONFIRMADO"
+        var botonConfirmarEmail = document.getElementById('boton-confirmar-email');
+        botonConfirmarEmail.textContent = 'CONFIRMADO';
+    } else {
+        successDiv.textContent = 'Error: Correo inválido';
+        successDiv.style.color = 'red';
+    }
+}
 
-        function registrarCBU() {
-            var cbuInput = document.getElementById('cbu');
-            var successDiv = document.getElementById('cbu-success');
+function registrarCBU() {
+    var cbuInput = document.getElementById('cbu');
+    var successDiv = document.getElementById('cbu-success');
 
-            if (cbuInput.value.length > 0) {
-                cbuInput.setAttribute('readonly', true);
-                cbuInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
-            } else {
-                successDiv.textContent = 'Error: CBU/CVU inválido';
-                successDiv.style.color = 'red';
-            }
-        }
-         function copiarDireccion() {
-            var direccion = document.getElementById('wallet-address');
-            var seleccion = document.createRange();
-            seleccion.selectNodeContents(direccion);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(seleccion);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
+    if (cbuInput.value.length > 0) {
+        cbuInput.setAttribute('readonly', true);
+        cbuInput.style.backgroundColor = '#f2f2f2';
+        successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
+        
+        // Cambiar el nombre del botón a "CONFIRMADO"
+        var botonConfirmarCBU = document.getElementById('boton-confirmar-cbu');
+        botonConfirmarCBU.textContent = 'CONFIRMADO';
+    } else {
+        successDiv.textContent = 'Error: CBU/CVU inválido';
+        successDiv.style.color = 'red';
+    }
+}
 
-            // Puedes mostrar un mensaje de éxito
-            alert('Dirección copiada: ' + direccion.innerText);
-        }
-         
+function copiarDireccion() {
+    var direccion = document.getElementById('wallet-address');
+    var seleccion = document.createRange();
+    seleccion.selectNodeContents(direccion);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(seleccion);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+
+    // Puedes mostrar un mensaje de éxito
+    alert('Dirección copiada: ' + direccion.innerText);
+    
+    // Cambiar el nombre del botón a "CONFIRMADO"
+    var botonCopiarDireccion = document.getElementById('boton-copiar-direccion');
+    botonCopiarDireccion.textContent = 'CONFIRMADO';
+}
+
     </script>
 </body>
 
