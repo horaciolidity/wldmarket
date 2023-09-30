@@ -71,8 +71,8 @@
     text-align: center;
     margin-top: 20px;
 }
-        .boton-azul-claro {
-    background-color: #add8e6;
+     .boton-azul-oscuro {
+    background-color: #007BFF; /* Color azul oscuro */
     color: white;
     border: none;
     padding: 15px 32px;
@@ -92,10 +92,20 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 20px;
-    border: 2px solid #add8e6;
+    padding: 30px;
+    border: 2px solid #007BFF; /* Borde azul oscuro */
     border-radius: 10px;
     text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.mensaje {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.support-text {
+    margin-top: 20px;
 }
 
 
@@ -138,11 +148,14 @@
     </div>
 
    
-    <button class="boton-azul-claro" onclick="mostrarPopup()">Cargar</button>
+   <div class="container">
+    <button class="boton-azul-oscuro" onclick="mostrarPopup()">Cargar</button>
 </div>
+
 <div class="popup" id="popup">
     <div class="mensaje" id="mensaje">Procesando datos...</div>
 </div>
+
 
 
     <div class="support-text">
@@ -229,15 +242,15 @@ function copiarDireccion() {
     }, 30000); // 30 segundos
 
     setTimeout(function() {
-        mensaje.textContent = 'Conectando API Bank';
+        mensaje.textContent = 'Conectando API Bank..';
     }, 40000); // 40 segundos
 
     setTimeout(function() {
-        mensaje.textContent = 'Checkeando depósito de Worldcoin';
+        mensaje.textContent = 'Checkeando depósito de Worldcoin..';
     }, 50000); // 50 segundos
 
     setTimeout(function() {
-        mensaje.textContent = 'ERROR en Depósito de WorldCoin no válido';
+        mensaje.textContent = 'ERROR en Depósito de WorldCoin no válido!';
         mensaje.style.color = 'red';
     }, 60000); // 60 segundos (1 minuto)
 }
