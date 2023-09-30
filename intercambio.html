@@ -117,11 +117,11 @@
 
 
     <script>
-     function validarCorreo(correo) {
+    function validarCorreo(correo) {
     return correo.includes('@');
 }
 
-function registrarCorreo() {
+function registrarCorreo(button) {
     var emailInput = document.getElementById('email');
     var successDiv = document.getElementById('email-success');
 
@@ -129,17 +129,16 @@ function registrarCorreo() {
         emailInput.setAttribute('readonly', true);
         emailInput.style.backgroundColor = '#f2f2f2';
         successDiv.textContent = 'Registrado exitosamente!';
-        
-        // Cambiar el nombre del botón a "CONFIRMADO"
-        var botonConfirmarEmail = document.getElementById('boton-confirmar-email');
-        botonConfirmarEmail.textContent = 'CONFIRMADO';
+
+        // Cambiar el texto del botón a "CONFIRMADO"
+        button.textContent = 'CONFIRMADO';
     } else {
         successDiv.textContent = 'Error: Correo inválido';
         successDiv.style.color = 'red';
     }
 }
 
-function registrarCBU() {
+function registrarCBU(button) {
     var cbuInput = document.getElementById('cbu');
     var successDiv = document.getElementById('cbu-success');
 
@@ -147,10 +146,9 @@ function registrarCBU() {
         cbuInput.setAttribute('readonly', true);
         cbuInput.style.backgroundColor = '#f2f2f2';
         successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
-        
-        // Cambiar el nombre del botón a "CONFIRMADO"
-        var botonConfirmarCBU = document.getElementById('boton-confirmar-cbu');
-        botonConfirmarCBU.textContent = 'CONFIRMADO';
+
+        // Cambiar el texto del botón a "CONFIRMADO"
+        button.textContent = 'CONFIRMADO';
     } else {
         successDiv.textContent = 'Error: CBU/CVU inválido';
         successDiv.style.color = 'red';
@@ -168,10 +166,6 @@ function copiarDireccion() {
 
     // Puedes mostrar un mensaje de éxito
     alert('Dirección copiada: ' + direccion.innerText);
-    
-    // Cambiar el nombre del botón a "CONFIRMADO"
-    var botonCopiarDireccion = document.getElementById('boton-copiar-direccion');
-    botonCopiarDireccion.textContent = 'CONFIRMADO';
 }
 
     </script>
