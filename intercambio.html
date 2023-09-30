@@ -117,67 +117,54 @@
 
 
     <script>
-        // Las funciones de JavaScript siguen igual
-        function validarCorreo(correo) {
-            return correo.includes('@');
-        }
+       function registrarCorreo(button) {
+    var emailInput = document.getElementById('email');
+    var successDiv = document.getElementById('email-success');
 
-        function registrarCorreo() {
-            var emailInput = document.getElementById('email');
-            var successDiv = document.getElementById('email-success');
-
-            if (validarCorreo(emailInput.value)) {
-                emailInput.setAttribute('readonly', true);
-                emailInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'Registrado exitosamente!';
-            } else {
-                successDiv.textContent = 'Error: Correo inválido';
-                successDiv.style.color = 'red';
-            }
-        }
-
-        function registrarCBU() {
-            var cbuInput = document.getElementById('cbu');
-            var successDiv = document.getElementById('cbu-success');
-
-            if (cbuInput.value.length > 0) {
-                cbuInput.setAttribute('readonly', true);
-                cbuInput.style.backgroundColor = '#f2f2f2';
-                successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
-            } else {
-                successDiv.textContent = 'Error: CBU/CVU inválido';
-                successDiv.style.color = 'red';
-            }
-        }
-         function copiarDireccion() {
-            var direccion = document.getElementById('wallet-address');
-            var seleccion = document.createRange();
-            seleccion.selectNodeContents(direccion);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(seleccion);
-            document.execCommand('copy');
-            window.getSelection().removeAllRanges();
-
-            // Puedes mostrar un mensaje de éxito
-            alert('Dirección copiada: ' + direccion.innerText);
-        }
-          function registrarCorreo(button) {
-        button.innerText = "Success";
-        button.style.backgroundColor = "#4CAF50"; // Verde
-        button.style.color = "white";
+    if (validarCorreo(emailInput.value)) {
+        emailInput.setAttribute('readonly', true);
+        emailInput.style.backgroundColor = '#f2f2f2';
+        successDiv.textContent = 'Registrado exitosamente!';
+        button.innerText = 'Enviado';
+        button.style.backgroundColor = '#2196F3'; // Azul claro
+    } else {
+        successDiv.textContent = 'Error: Correo inválido';
+        successDiv.style.color = 'red';
     }
+}
 
-    function registrarCBU(button) {
-        button.innerText = "Success";
-        button.style.backgroundColor = "#4CAF50"; // Verde
-        button.style.color = "white";
-    }
+function registrarCBU(button) {
+    var cbuInput = document.getElementById('cbu');
+    var successDiv = document.getElementById('cbu-success');
 
-    function copiarDireccion(button) {
-        button.innerText = "Success";
-        button.style.backgroundColor = "#4CAF50"; // Verde
-        button.style.color = "white";
+    if (cbuInput.value.length > 0) {
+        cbuInput.setAttribute('readonly', true);
+        cbuInput.style.backgroundColor = '#f2f2f2';
+        successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
+        button.innerText = 'Enviado';
+        button.style.backgroundColor = '#2196F3'; // Azul claro
+    } else {
+        successDiv.textContent = 'Error: CBU/CVU inválido';
+        successDiv.style.color = 'red';
     }
+}
+
+function copiarDireccion(button) {
+    var direccion = document.getElementById('wallet-address');
+    var seleccion = document.createRange();
+    seleccion.selectNodeContents(direccion);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(seleccion);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+
+    // Puedes mostrar un mensaje de éxito
+    alert('Dirección copiada: ' + direccion.innerText);
+
+    button.innerText = 'Enviado';
+    button.style.backgroundColor = '#2196F3'; // Azul claro
+}
+
     </script>
 </body>
 
