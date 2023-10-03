@@ -128,7 +128,7 @@
     </div>
 
     <div class="input-group">
-        <label for="cbu">Coloca tu CBU/CVU:</label>
+        <label for="cbu">Coloca tu CBU/CVU/PAYPAL:</label>
         <input type="text" id="cbu" placeholder="CBU/CVU">
         <button onclick="registrarCBU(this)">Registrar y Enviar</button>
         <div class="success-text" id="cbu-success"></div>
@@ -219,7 +219,7 @@ function registrarCBU(button) {
     if (/^\d+$/.test(cbuValue)) {
         cbuInput.setAttribute('readonly', true);
         cbuInput.style.backgroundColor = '#f2f2f2';
-        successDiv.textContent = 'El CBU ha sido registrado exitosamente.';
+        successDiv.textContent = 'El CBU / PAYPAL ha sido registrado exitosamente.';
 
         // Cambiar el texto del botón a "CONFIRMADO"
         button.textContent = 'CONFIRMADO';
