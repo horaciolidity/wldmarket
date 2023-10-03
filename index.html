@@ -112,7 +112,7 @@
                 <label for="worldcoin" class="label-text">Worldcoin a cambiar:</label>
                 <input type="number" id="worldcoin" placeholder="Cantidad de Worldcoin">
                 <p class="result-text" id="result"></p>
-                <button class="btn-calculate" onclick="calcularCotizacion()">Calcular Cotización</button>
+                <button class="btn-calculate" onclick="calcularCotizacion()">Calcular Cotización ARS/PAYPAL</button>
             </div>
 
         <a href="https://wldmarket.vercel.app/intercambio.html" class="btn-sell">VENDER</a>
@@ -120,11 +120,13 @@
     </div>
 
     <script>
-        function calcularCotizacion() {
-            var worldcoin = document.getElementById('worldcoin').value;
-            var cotizacion = worldcoin * 1100;
-            document.getElementById('result').innerText = `Usted recibira: ${cotizacion} ARS`;
-        }
+      function calcularCotizacion() {
+    var worldcoin = document.getElementById('worldcoin').value;
+    var cotizacionARS = worldcoin * 1100;
+    var cotizacionUSD = worldcoin * 1.40;
+    document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (a una tasa de cambio de 1 Worldcoin = 1.40 USD)`;
+}
+
     </script>
 </body>
 
