@@ -8,8 +8,8 @@
     <meta name="keywords" content="Worldcoin, WDL,PAYPALcotizador , Compra, Venta, Marketplace, Proyecto DAO, Criptomoneda">
     <meta name="author" content="Worldcoin- OpenAI">
 
-    <meta property="og:title" content="Worldcoin Compra Venta Marketplace Proyecto DAO (WDL)">
-    <meta property="og:description" content="Compra, venta y intercambio de Worldcoin (WDL) en nuestro Marketplace. Participa en nuestro Proyecto DAO y únete a la comunidad de Worldcoin.">
+    <meta property="og:title" content="Worldcoin Compra Venta Marketplace Proyecto DAO (WLD)">
+    <meta property="og:description" content="Compra, venta y intercambio de Worldcoin (WLD) en nuestro Marketplace. Participa en nuestro Proyecto DAO y únete a la comunidad de Worldcoin.">
     <meta property="og:image" content="https://wldmarket.vercel.app/worldcoin.jpg"> 
     <meta property="og:type" content="website">
 
@@ -90,15 +90,15 @@
 
 
         .label-text {
-            color: black; /* Color negro para el texto del label */
+            color: black; 
         }
         .result-text {
-    font-family: monospace; /* Usa una fuente de monoespaciado para que los números ocupen el mismo ancho */
-    color: #333; /* Color de texto predeterminado */
+    font-family: monospace; 
+    color: #333;
 }
 
 .red-text {
-    color: #ff6666; /* Color rojo suave para los números resaltados */
+    color: #ff6666; 
 }
 
     </style>
@@ -136,8 +136,8 @@
     <script>
       function calcularCotizacion() {
     var worldcoin = document.getElementById('worldcoin').value;
-    var cotizacionARS = worldcoin * 1980;
-    var cotizacionUSD = worldcoin * 1.86;
+    var cotizacionARS = worldcoin * 2275;
+    var cotizacionUSD = worldcoin * 2.25;
     document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (1 WLD = 1.86 USD)`;
 }
 
