@@ -56,7 +56,11 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex; /* Agrega display: flex al contenedor de botones */
+            flex-direction: column; /* Alinea los botones en una columna */
+            align-items: center; /* Centra los elementos horizontalmente */
         }
+        
 
         input[type="number"] {
             width: calc(100% - 20px);
@@ -73,21 +77,31 @@
             color: black;
         }
 
-       .btn-calculate,
-.btn-sell {
-    margin-top: 10px; /* Agrega un margen superior para separar los botones */
-    background-color: #4CAF50;
-    display: inline-block; /* Alinea el botón en línea con el texto anterior */
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: white;
-    text-decoration: none; /* Elimina el subrayado predeterminado en los enlaces */
-}
+       .btn-calculate {
+            margin: 10px auto; /* Alinea el botón en el centro horizontalmente */
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+         }
 
-
-.btn-sell {
-    background-color: #4CAF50;
-}
+        .btn-calculate img {
+            margin-left: 10px; /* Agrega espacio entre el texto y la imagen dentro del botón */
+        }
+        .btn-sell {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
 
 
         .label-text {
