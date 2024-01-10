@@ -32,6 +32,11 @@
             justify-content: center;
             align-items: center;
         }
+        .banner-image {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción de la imagen */
+            border-radius: 10px; /* Opcional: redondea las esquinas de la imagen */
+        }
 
         .container {
             text-align: center;
@@ -125,6 +130,10 @@
     <div class="outer-container">
         
         <div class="container">
+            <div class="banner-container">
+                <img src="https://worldcoin-app.vercel.app/bono.jpg" alt="Banner" class="banner-image">
+            
+
             
               <div style="text-align: center;">
         <div style="border-radius: 50%; overflow: hidden; width: 200px; height: 200px; margin: 0 auto;">
