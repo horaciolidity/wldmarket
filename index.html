@@ -81,32 +81,48 @@
             margin-top: 10px;
             color: black;
         }
-
-       .btn-calculate {
+.btn-calculate {
     margin: 10px auto;
-    background-color: black; /* Cambiado a color negro */
+    background-color: black;
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease, border 0.3s ease; /* Agregado efecto de transición en el color de fondo y en los bordes */
-    display: flex;
-    align-items: center;
+    position: relative; /* Agregado */
 }
 
-.btn-calculate:hover {
-    background-color: #333; /* Color ligeramente más oscuro al pasar el ratón */
+.btn-calculate span {
+    margin-right: 10px;
 }
 
-.btn-calculate:active {
-    border: 2px solid #fff; /* Añadido borde blanco al hacer clic */
-    background-color: #000; /* Cambiado el color de fondo al hacer clic */
+.btn-calculate img {
+    width: 30px;
+    height: auto;
 }
 
-        .btn-calculate img {
-            margin-left: 10px; /* Agrega espacio entre el texto y la imagen dentro del botón */
-        }
+/* Pseudo-elemento ::before para simular efecto de carga */
+.btn-calculate::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: width 0.3s ease; /* Agregado */
+}
+
+.btn-calculate:hover::before {
+    width: 100%;
+}
+
+.btn-calculate:active::before {
+    width: 100%;
+    transition: none; /* Agregado para desactivar la transición al hacer clic */
+}
+
         .btn-sell {
             margin-top: 10px;
             background-color: #4CAF50;
@@ -156,10 +172,11 @@
                 <input type="number" id="worldcoin" placeholder="Cantidad de Worldcoin">
                 <p class="result-text" id="result"></p>
                 
- <button class="btn-calculate" onclick="calcularCotizacion()" style="display: flex; align-items: center;  color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
-    <span style="margin-right: 10px;">Calcular Cotización ARS/PAYPAL</span>
-    <img src="https://worldcoin-app.vercel.app/paypal.png" alt="Imagen Transparente" style="width: 30px; height: auto;">
+ <button class="btn-calculate" onclick="calcularCotizacion()">
+    <span>Calcular Cotización ARS/PAYPAL</span>
+    <img src="https://worldcoin-app.vercel.app/paypal.png" alt="Imagen Transparente">
 </button>
+
 
 
 
