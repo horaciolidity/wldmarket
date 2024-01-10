@@ -83,17 +83,26 @@
         }
 
        .btn-calculate {
-            margin: 10px auto; /* Alinea el botón en el centro horizontalmente */
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-         }
+    margin: 10px auto;
+    background-color: black; /* Cambiado a color negro */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border 0.3s ease; /* Agregado efecto de transición en el color de fondo y en los bordes */
+    display: flex;
+    align-items: center;
+}
+
+.btn-calculate:hover {
+    background-color: #333; /* Color ligeramente más oscuro al pasar el ratón */
+}
+
+.btn-calculate:active {
+    border: 2px solid #fff; /* Añadido borde blanco al hacer clic */
+    background-color: #000; /* Cambiado el color de fondo al hacer clic */
+}
 
         .btn-calculate img {
             margin-left: 10px; /* Agrega espacio entre el texto y la imagen dentro del botón */
