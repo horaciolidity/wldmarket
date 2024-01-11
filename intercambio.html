@@ -8,8 +8,8 @@
     <style>
      body {
     font-family: Arial, sans-serif;
-    background-color: #000;
-    color: #fff;
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
     margin: 0;
     padding: 0;
     display: flex;
@@ -20,65 +20,61 @@
 
 .container {
     background-color: #111;
+    color: white; /* Texto blanco en el contenedor */
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
     text-align: center;
     width: 300px;
     display: flex;
-    flex-direction: column; /* Cambiamos la dirección del flujo a columnas */
-    align-items: center; /* Centramos los elementos en el eje transversal (vertical) */
-}
-
-.input-group {
-     margin-bottom: 20px;
-     width: 100%; /* Aseguramos que cada grupo de entrada ocupe el 100% del ancho */
+    flex-direction: column;
+    align-items: center;
 }
 
 .input-group label {
     font-size: 18px;
     margin-bottom: 10px;
     display: block;
-    color: #4CAF50; /* Verde */
+    color: black; /* Texto negro */
 }
 
 .input-group input[type="text"] {
     width: calc(100% - 30px);
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #4CAF50; /* Verde */
+    border: 1px solid black; /* Borde negro */
     border-radius: 5px;
-    background-color:black; /* Rosa oscuro */
-    color: #442b3e; /* Blanco */
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
 }
 
 /* Estilo para el input cuando está en foco (sellado) */
 .input-group input[type="text"]:focus {
-    background-color: black; /
+    background-color: white;
 }
 
 .input-group button {
     width: 100px;
     padding: 10px;
     font-size: 14px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: black; /* Botón negro */
+    color: white; /* Texto blanco en el botón */
     border: none;
-    border-radius: 15px; /* Bordes redondos */
+    border-radius: 15px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transición suave */
+    transition: background-color 0.3s ease;
 }
 
 .input-group button:hover {
-    background-color:black;
+    background-color: #333; /* Color ligeramente más oscuro al pasar el ratón */
 }
 
 .boton-azul-oscuro {
-    background-color: #007BFF; /* Azul claro */
+    background-color: black; /* Botón negro */
 }
 
 .boton-azul-oscuro:hover {
-    background-color: #0056b3; /* Azul oscuro al pasar el mouse */
+    background-color: #333; /* Color ligeramente más oscuro al pasar el ratón */
 }
 
 .success-text {
