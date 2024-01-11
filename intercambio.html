@@ -16,7 +16,16 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column; /* Cambiado a columna para centrar la imagen y el contenido */
+    text-align: center; /* Centra el contenido horizontalmente */
+        
 }
+    #banner {
+            width: 100%; /* Ancho al 100% del contenedor */
+            max-width: 600px; /* Máximo ancho de la imagen */
+            border-radius: 10px; /* Borde redondeado opcional */
+        }
+
 
 .container {
     background-color: white;
@@ -117,6 +126,9 @@
 </head>
 
 <body>
+
+ <img id="banner" src="https://worldcoin-app.vercel.app/intercambio.html" alt="Banner Worldcoin"> <!-- Reemplaza "URL_DE_TU_IMAGEN" con la URL real de tu imagen -->
+
  <div class="container">
     <h2>Registro - Worldcoin</h2>
 
