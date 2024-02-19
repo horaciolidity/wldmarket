@@ -176,7 +176,7 @@
                 <p class="result-text" id="result"></p>
                 
  <button class="btn-calculate" onclick="calcularCotizacion()">
-    <span>Calcular Cotización ARS/PAYPAL</span>
+    <span>Calcular Cotización ARS/PAYPAL/CLP</span>
     <img src="https://worldcoin-app.vercel.app/paypal.png" alt="Imagen Transparente">
 </button>
 
@@ -190,9 +190,9 @@
     <script>
       function calcularCotizacion() {
     var worldcoin = document.getElementById('worldcoin').value;
-    var cotizacionARS = worldcoin * 4800;
-    var cotizacionUSD = worldcoin * 4.40;
-    document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (1 WLD = 4.40 USD)`;
+    var cotizacionARS = worldcoin * 7500;
+    var cotizacionUSD = worldcoin * 7.40;
+    document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (1 WLD = 7.40 USD)`;
 }
 
     </script>
