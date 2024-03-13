@@ -148,6 +148,24 @@
 .red-text {
     color: #ff6666; 
 }
+         #referralLink {
+            background-color: #f0f0f0; /* Color de fondo */
+            color: #333; /* Color del texto */
+            padding: 10px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+            margin-top: 20px; /* Espacio exterior superior */
+            font-family: Arial, sans-serif; /* Tipo de fuente */
+        }
+
+        #referralLink a {
+            color: #007bff; /* Color del enlace */
+            text-decoration: none; /* Sin subrayado */
+            font-weight: bold; /* Texto en negrita */
+        }
+
+        #referralLink a:hover {
+            text-decoration: underline; /* Subrayado al pasar el mouse */
+        }
 
     </style>
 </head>
@@ -205,23 +223,17 @@
     document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (1 WLD = 12.30 USD)`;
 }
          function generateReferralLink() {
-        // Obtiene la dirección ingresada por el usuario
         var address = document.getElementById("addressInput").value;
         if (address === '') {
-            alert('Por favor, ingrese una dirección ERC20.');
+            alert('Por favor, ingrese una dirección Optimism');
             return;
         }
         
-        // Especifica que la red debe ser Optimism
         var network = "Optimism";
-        
-        // Obtiene el nombre actual de la página
         var pageName = document.title;
         
-        // Construye el enlace de referido
         var referralLink = window.location.href + "?network=" + encodeURIComponent(network) + "&ref=" + encodeURIComponent(address) + "&pageName=" + encodeURIComponent(pageName);
         
-        // Muestra el enlace de referido al usuario de manera más explícita
         document.getElementById("referralLink").innerHTML = 'Tu enlace de referido es: <a href="' + referralLink + '" target="_blank">' + referralLink + '</a>';
     }
     </script>
