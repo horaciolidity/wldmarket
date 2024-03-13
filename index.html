@@ -187,14 +187,14 @@
         </div>
     </div>
 
-            <h2>Ingrese su dirección ERC20 para generar un enlace de referido</h2>
+          <h2>Ingrese su dirección Optimism (Red Optimism) para generar un enlace de referido</h2>
 
 <!-- Formulario para la entrada del usuario -->
-<input type="text" id="addressInput" placeholder="Dirección ERC20">
+<input type="text" id="addressInput" placeholder="Dirección Optimism">
 <button onclick="generateReferralLink()">Generar Referido</button>
 
 <!-- Donde se mostrará el enlace de referido generado -->
-<p id="referralLink"></p>
+<p id="referralLink">Tu enlace de referido aparecerá aquí</p>
 
     <script>
       function calcularCotizacion() {
@@ -203,20 +203,26 @@
     var cotizacionUSD = worldcoin * 12.30;
     document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (1 WLD = 12.30 USD)`;
 }
-          function generateReferralLink() {
+         function generateReferralLink() {
         // Obtiene la dirección ingresada por el usuario
         var address = document.getElementById("addressInput").value;
+        if (address === '') {
+            alert('Por favor, ingrese una dirección ERC20.');
+            return;
+        }
+        
+        // Especifica que la red debe ser Optimism
+        var network = "Optimism";
         
         // Obtiene el nombre actual de la página
         var pageName = document.title;
         
         // Construye el enlace de referido
-        var referralLink = window.location.href + "?ref=" + encodeURIComponent(address) + "&pageName=" + encodeURIComponent(pageName);
+        var referralLink = window.location.href + "?network=" + encodeURIComponent(network) + "&ref=" + encodeURIComponent(address) + "&pageName=" + encodeURIComponent(pageName);
         
-        // Muestra el enlace de referido al usuario
-        document.getElementById("referralLink").innerText = "Tu enlace de referido es: " + referralLink;
+        // Muestra el enlace de referido al usuario de manera más explícita
+        document.getElementById("referralLink").innerHTML = 'Tu enlace de referido es: <a href="' + referralLink + '" target="_blank">' + referralLink + '</a>';
     }
-
     </script>
 </body>
 
