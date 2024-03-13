@@ -187,15 +187,15 @@
         </div>
     </div>
 
-          <h2>Ingrese su dirección Optimism (Red Optimism) para generar un enlace de referido</h2>
+<div style="color: black;">
+    <h2>Ingrese su dirección ERC20 (Red Optimism) para generar un enlace de referido</h2>
+</div>
 
 <!-- Formulario para la entrada del usuario -->
 <input type="text" id="addressInput" placeholder="Dirección Optimism">
 <button onclick="generateReferralLink()">Generar Referido</button>
 
-<div style="color: black;">
-    <h2>Ingrese su dirección ERC20 (Red Optimism) para generar un enlace y gane 0.1 wld por referido</h2>
-</div>
+<p id="referralLink">Tu enlace de referido aparecerá aquí</p>
 
     <script>
       function calcularCotizacion() {
