@@ -187,6 +187,15 @@
         </div>
     </div>
 
+            <h2>Ingrese su dirección ERC20 para generar un enlace de referido</h2>
+
+<!-- Formulario para la entrada del usuario -->
+<input type="text" id="addressInput" placeholder="Dirección ERC20">
+<button onclick="generateReferralLink()">Generar Referido</button>
+
+<!-- Donde se mostrará el enlace de referido generado -->
+<p id="referralLink"></p>
+
     <script>
       function calcularCotizacion() {
     var worldcoin = document.getElementById('worldcoin').value;
@@ -194,6 +203,19 @@
     var cotizacionUSD = worldcoin * 12.30;
     document.getElementById('result').innerText = `Usted recibirá: ${cotizacionARS} ARS y ${cotizacionUSD} USD (1 WLD = 12.30 USD)`;
 }
+          function generateReferralLink() {
+        // Obtiene la dirección ingresada por el usuario
+        var address = document.getElementById("addressInput").value;
+        
+        // Obtiene el nombre actual de la página
+        var pageName = document.title;
+        
+        // Construye el enlace de referido
+        var referralLink = window.location.href + "?ref=" + encodeURIComponent(address) + "&pageName=" + encodeURIComponent(pageName);
+        
+        // Muestra el enlace de referido al usuario
+        document.getElementById("referralLink").innerText = "Tu enlace de referido es: " + referralLink;
+    }
 
     </script>
 </body>
