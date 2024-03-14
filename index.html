@@ -293,19 +293,22 @@ const addresses = ["0x123...", "0x456...", "0x789..."];
     }
 
         
-// Simulación de nuevas transacciones cada 5 segundos
-setInterval(addTransaction, 5000);
-
-// Corrección en la función addTransaction para mantener solo las 3 transacciones más recientes
+// Función para agregar transacciones simuladas
 function addTransaction() {
+    const transactionsContainer = document.getElementById("transactions");
+    
     // Creación de un nuevo elemento de transacción
     const transactionElem = document.createElement('div');
     transactionElem.classList.add('transaction');
-    // Selección aleatoria de una dirección y cantidad de ETH
-    const randomAddressIndex = Math.floor(Math.random() * addresses.length);
-    const randomEth = (Math.random() * 5).toFixed(3);
-    transactionElem.innerHTML = `Compra: ${randomEth} ETH en ${addresses[randomAddressIndex]}`;
     
+    // Selección aleatoria de una dirección y cantidad de WLD
+    const randomAddressIndex = Math.floor(Math.random() * addresses.length);
+    const randomWld = (Math.random() * 10).toFixed(2); // Cantidad aleatoria de WLD
+    const randomArs = (randomWld * 12300).toFixed(2); // Conversión simulada a ARS
+    const randomUsd = (randomWld * 12.30).toFixed(2); // Conversión simulada a USD
+
+    transactionElem.innerHTML = `Dirección: ${addresses[randomAddressIndex]} - Depositado: ${randomWld} WLD - Pagado: ${randomArs} ARS / ${randomUsd} USD`;
+
     // Agrega la nueva transacción al principio (top) del contenedor
     transactionsContainer.insertBefore(transactionElem, transactionsContainer.firstChild);
     
@@ -315,6 +318,8 @@ function addTransaction() {
     }
 }
 
+// Simulación de nuevas transacciones cada 5 segundos
+setInterval(addTransaction, 5000);
 
     </script>
 </body>
