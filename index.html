@@ -234,7 +234,11 @@
         
         var referralLink = window.location.href + "?network=" + encodeURIComponent(network) + "&ref=" + encodeURIComponent(address) + "&pageName=" + encodeURIComponent(pageName);
         
-        document.getElementById("referralLink").innerHTML = 'Tu enlace de referido es: <a href="' + referralLink + '" target="_blank">' + referralLink + '</a>';
+        // Establece un texto amigable para mostrar como el enlace
+        var displayText = "Haz clic aquí para tu referido";
+        
+        // Actualiza el HTML del enlace de referido para usar el texto amigable
+        document.getElementById("referralLink").innerHTML = 'Tu enlace de referido es: <a href="' + referralLink + '" target="_blank">' + displayText + '</a>';
     }
     </script>
 </body>
