@@ -287,30 +287,28 @@
     }
 
         
-const transactionsContainer = document.getElementById('transactions');
-const addresses = ["0x123...", "0x456...", "0x789...", /* Puedes añadir más direcciones acortadas aquí */];
-const liquidityBar = document.getElementById('liquidityBar');
+// Simulación de nuevas transacciones cada 5 segundos
+setInterval(addTransaction, 5000);
 
+// Corrección en la función addTransaction para mantener solo las 3 transacciones más recientes
 function addTransaction() {
-  // Asegurarse de que solo se mantengan las últimas 3 transacciones
-  while (transactionsContainer.children.length >= 3) {
-    transactionsContainer.removeChild(transactionsContainer.lastChild); // Elimina la última transacción
-  }
-
-  const transactionElem = document.createElement('div');
-  transactionElem.classList.add('transaction');
-  const randomAddressIndex = Math.floor(Math.random() * addresses.length);
-  const randomEth = (Math.random() * 5).toFixed(3);
-  transactionElem.innerHTML = `Compra: ${randomEth} ETH en ${addresses[randomAddressIndex]}`;
-  // Inserta la nueva transacción al principio
-  if (transactionsContainer.firstChild) {
+    // Creación de un nuevo elemento de transacción
+    const transactionElem = document.createElement('div');
+    transactionElem.classList.add('transaction');
+    // Selección aleatoria de una dirección y cantidad de ETH
+    const randomAddressIndex = Math.floor(Math.random() * addresses.length);
+    const randomEth = (Math.random() * 5).toFixed(3);
+    transactionElem.innerHTML = `Compra: ${randomEth} ETH en ${addresses[randomAddressIndex]}`;
+    
+    // Agrega la nueva transacción al principio (top) del contenedor
     transactionsContainer.insertBefore(transactionElem, transactionsContainer.firstChild);
-  } else {
-    transactionsContainer.appendChild(transactionElem);
-  }
-
-  // Este enfoque asume que quieres que las nuevas transacciones aparezcan en la parte superior y las antiguas se eliminen
+    
+    // Asegurarse de que solo se mantengan las 3 transacciones más recientes
+    while (transactionsContainer.children.length > 3) {
+        transactionsContainer.removeChild(transactionsContainer.lastChild);
+    }
 }
+
 
     </script>
 </body>
