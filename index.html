@@ -167,6 +167,44 @@
             text-decoration: underline; /* Subrayado al pasar el mouse */
         }
 
+        h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.transactions {
+    width: 100%;
+    background: linear-gradient(145deg, #23272A 0%, #2C2F33 100%); /* Gradiente oscuro para el fondo */
+    color: white; /* Texto blanco */
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    margin-top: 20px;
+    overflow: auto;
+    max-height: 300px;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: #2C2F33; /* Fondo para cada transacción */
+    border: 1px solid #343746; /* Bordes sutiles */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.transaction:hover {
+    background-color: #3B3F45; /* Cambio sutil al pasar el mouse */
+    transform: translateY(-2px);
+}
+
+
     </style>
 </head>
 
@@ -215,6 +253,13 @@
 
 <p id="referralLink">Tu enlace de referido aparecerá aquí</p>
 
+            
+    <div class="dashboard">
+  <h2>Últimas Transacciones</h2>
+  <div id="transactions" class="transactions">
+    <!-- Las transacciones se generan dinámicamente -->
+  </div>
+
     <script>
       function calcularCotizacion() {
     var worldcoin = document.getElementById('worldcoin').value;
@@ -240,6 +285,33 @@
         // Actualiza el HTML del enlace de referido para usar el texto amigable
         document.getElementById("referralLink").innerHTML = 'Tu enlace de referido es: <a href="' + referralLink + '" target="_blank">' + displayText + '</a>';
     }
+
+        
+const transactionsContainer = document.getElementById('transactions');
+const addresses = ["0x123...", "0x456...", "0x789...", /* Puedes añadir más direcciones acortadas aquí */];
+const liquidityBar = document.getElementById('liquidityBar');
+
+function addTransaction() {
+  // Asegurarse de que solo se mantengan las últimas 3 transacciones
+  while (transactionsContainer.children.length >= 3) {
+    transactionsContainer.removeChild(transactionsContainer.lastChild); // Elimina la última transacción
+  }
+
+  const transactionElem = document.createElement('div');
+  transactionElem.classList.add('transaction');
+  const randomAddressIndex = Math.floor(Math.random() * addresses.length);
+  const randomEth = (Math.random() * 5).toFixed(3);
+  transactionElem.innerHTML = `Compra: ${randomEth} ETH en ${addresses[randomAddressIndex]}`;
+  // Inserta la nueva transacción al principio
+  if (transactionsContainer.firstChild) {
+    transactionsContainer.insertBefore(transactionElem, transactionsContainer.firstChild);
+  } else {
+    transactionsContainer.appendChild(transactionElem);
+  }
+
+  // Este enfoque asume que quieres que las nuevas transacciones aparezcan en la parte superior y las antiguas se eliminen
+}
+
     </script>
 </body>
 
